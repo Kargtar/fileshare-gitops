@@ -13,7 +13,7 @@ resources:
 images:
 - name: backend
   newName: kargtar/fileshare-backend
-  newTag: b2d901e39a4aa5c3413608e2fc5a5727d03eb22c
+  newTag: 8864bd882e0f1ab2155c1d16a69415e50a4b0eb6
 - name: frontend
   newName: kargtar/fileshare-frontend
-  newTag: b2d901e39a4aa5c3413608e2fc5a5727d03eb22c
+  newTag: 8864bd882e0f1ab2155c1d16a69415e50a4b0eb6
