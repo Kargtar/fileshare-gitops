@@ -3,10 +3,17 @@ kind: Kustomization
 namespace: fileshare
 
 resources:
-  - namespace.yaml
-  - backend-sa.yaml
-  - config.yaml
-  - valkey.yaml
-  - backend.yaml
-  - frontend.yaml
-  - ingress.yaml
+- namespace.yaml
+- backend-sa.yaml
+- config.yaml
+- valkey.yaml
+- backend.yaml
+- frontend.yaml
+- ingress.yaml
+images:
+- name: backend
+  newName: kargtar/fileshare-backend
+  newTag: 3264cc3523743484b3d6551722613b75fdc96612
+- name: frontend
+  newName: kargtar/fileshare-frontend
+  newTag: 3264cc3523743484b3d6551722613b75fdc96612
