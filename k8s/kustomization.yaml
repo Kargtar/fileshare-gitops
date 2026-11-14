@@ -6,3 +6,7 @@ resources:
   - namespace.yaml
   - backend-sa.yaml
   - config.yaml
+  - valkey.yaml
+  - backend.yaml
+  - frontend.yaml
+  - ingress.yaml

@@ -6,10 +6,14 @@ repozytorium przez ArgoCD, więc zmiany wdraża się commitem, a nie `kubectl ap
 - `apps/` – aplikacje ArgoCD. Czyta je root app założony przez fileshare-infra.
 - `k8s/` – manifesty aplikacji (Kustomize), wdrażane do namespace `fileshare`.
 
-Trzeba ustawić ID konta AWS w `k8s/backend-sa.yaml` i `k8s/config.yaml` 
-(`aws sts get-caller-identity --query Account --output text`) oraz adres
-repozytorium w `apps/fileshare.yaml`. Nazwy roli i bucketu są stałe, więc `tofu destroy`
-i ponowny `apply` niczego tu nie zmieniają.
+Hasło do Valkey nie jest w repozytorium. Po każdym `tofu apply`, kiedy ArgoCD założy już
+namespace, trzeba utworzyć Secret ręcznie:
+
+```sh
+kubectl -n fileshare create secret generic valkey --from-literal=password=$(openssl rand -hex 16)
+```
+
+Tagi obrazów w `k8s/kustomization.yaml` podbija CI z fileshare-app po każdym pushu na `main`.
 
 Podgląd tego, co trafi do klastra:
 
